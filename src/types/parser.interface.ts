@@ -1,5 +1,5 @@
 export interface ParserInterface {
-    url: String,
-    mapper: Function,
-    steps: Array<Function>
+  _url: string
+  _mapper: Function
+  _name: string
 }

@@ -1,5 +1,5 @@
 export interface ParserInterface {
   _url: string
-  _mapper: Function
+  _mapper: (parseData: any[]) => any
   _name: string
 }

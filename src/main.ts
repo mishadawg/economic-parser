@@ -6,8 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
   const config = new DocumentBuilder()
-    .setTitle('ParserData')
-    .setDescription('Парсеры для RNS')
+    .setTitle('Парсеры данных')
+    .setDescription('Всякий экономический хлам')
     .setVersion('0.0.1')
     .build()
   const document = SwaggerModule.createDocument(app, config)

@@ -1,6 +1,6 @@
-import { ParserInterface } from '@/types/parser.interface'
 import { Constructor } from '@/lib/types/constructor.type'
 import { ParserDecoratorPayload } from '@/lib/types/parser.decorator.payload'
+import { ParserInterface } from '@/lib/types/parser.interface'
 
 export function ParserDecorator(params: ParserDecoratorPayload) {
   return function <T extends Constructor>(constructor: T) {

@@ -54,7 +54,7 @@ const mapper = (parseData: any[]): any => {
 const grab = (url): Promise<AxiosPromise> => {
   return axios.get(url)
 }
-export const parse = async (url) => {
+export const parseBonds = async (url) => {
   const result = await grab(url)
   const parserObj = cheerio.load(result.data)
 

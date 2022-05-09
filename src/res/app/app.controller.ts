@@ -22,19 +22,12 @@ export class AppController {
     return CompaniesMarketCapParser.parse()
   }
   @Get(TradingEconomicsMoneySupplyM0Parser.controllerGetPath)
-  async supplyM0(): Promise<Record<string, any>> {
-    return TradingEconomicsMoneySupplyM0Parser.parse()
-  }
-  @Get(TradingEconomicsMoneySupplyM1Parser.controllerGetPath)
-  async supplyM1(): Promise<Record<string, any>> {
-    return TradingEconomicsMoneySupplyM1Parser.parse()
-  }
-  @Get(TradingEconomicsMoneySupplyM2Parser.controllerGetPath)
-  async supplyM2(): Promise<Record<string, any>> {
-    return TradingEconomicsMoneySupplyM2Parser.parse()
-  }
-  @Get(TradingEconomicsMoneySupplyM3Parser.controllerGetPath)
-  async supplyM3(): Promise<Record<string, any>> {
-    return TradingEconomicsMoneySupplyM3Parser.parse()
+  async supply(): Promise<Record<string, any>> {
+    return {
+      m0: await TradingEconomicsMoneySupplyM0Parser.parse(),
+      m1: await TradingEconomicsMoneySupplyM1Parser.parse(),
+      m2: await TradingEconomicsMoneySupplyM2Parser.parse(),
+      m3: await TradingEconomicsMoneySupplyM3Parser.parse(),
+    }
   }
 }

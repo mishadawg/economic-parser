@@ -1,6 +1,6 @@
 import { ParserDecorator } from '@/lib/decorator/parser.decorator'
 import { AbstractParser } from '@/lib/abstract-parser'
-import { parseBonds } from '@/lib/processing/trading-economics.processing'
+import { parseBonds, supplyParser } from '@/lib/processing/trading-economics.processing'
 
 @ParserDecorator({
   schedule: '* * * * *',
@@ -15,8 +15,8 @@ export class TradingEconomicsParser extends AbstractParser {}
   schedule: '* * * * *',
   url: 'https://tradingeconomics.com/country-list/money-supply-m0',
   name: 'Trading Economics Money supply',
-  path: 'trading-economics-money-supply-m0',
-  parse: (url) => url,
+  path: 'trading-economics-money-supply',
+  parse: supplyParser,
 })
 export class TradingEconomicsMoneySupplyM0Parser extends AbstractParser {}
 
@@ -24,8 +24,8 @@ export class TradingEconomicsMoneySupplyM0Parser extends AbstractParser {}
   schedule: '* * * * *',
   url: 'https://tradingeconomics.com/country-list/money-supply-m1',
   name: 'Trading Economics Money supply',
-  path: 'trading-economics-money-supply-m1',
-  parse: (url) => url,
+  path: 'trading-economics-money-supply',
+  parse: supplyParser,
 })
 export class TradingEconomicsMoneySupplyM1Parser extends AbstractParser {}
 
@@ -33,8 +33,8 @@ export class TradingEconomicsMoneySupplyM1Parser extends AbstractParser {}
   schedule: '* * * * *',
   url: 'https://tradingeconomics.com/country-list/money-supply-m2',
   name: 'Trading Economics Money supply',
-  path: 'trading-economics-money-supply-m2',
-  parse: (url) => url,
+  path: 'trading-economics-money-supply',
+  parse: supplyParser,
 })
 export class TradingEconomicsMoneySupplyM2Parser extends AbstractParser {}
 
@@ -42,7 +42,7 @@ export class TradingEconomicsMoneySupplyM2Parser extends AbstractParser {}
   schedule: '* * * * *',
   url: 'https://tradingeconomics.com/country-list/money-supply-m3',
   name: 'Trading Economics Money supply',
-  path: 'trading-economics-money-supply-m3',
-  parse: (url) => url,
+  path: 'trading-economics-money-supply',
+  parse: supplyParser,
 })
 export class TradingEconomicsMoneySupplyM3Parser extends AbstractParser {}

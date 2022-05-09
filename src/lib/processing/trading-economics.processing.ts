@@ -22,10 +22,8 @@ const tableMapper = (table: any[]) => {
         : accum
     }, {})
 
-  const result = Object.values(rows).map((row: any[]) => rowMapper(row))
-  return result
+  return Object.values(rows).map((row: any[]) => rowMapper(row))
 }
-
 const rowMapper = (row: any[]) => {
   const getData = (column) => {
     return row.find((c) => c.column === column)?.data || null
@@ -39,7 +37,6 @@ const rowMapper = (row: any[]) => {
     q123: parseFloat(getData(7)),
   }
 }
-
 const mapper = (parseData: any[]): any => {
   return {
     top: tableMapper(parseData.filter((d) => d.table === 0)),
@@ -50,10 +47,10 @@ const mapper = (parseData: any[]): any => {
     africa: tableMapper(parseData.filter((d) => d.table === 5)),
   }
 }
-
 const grab = (url): Promise<AxiosPromise> => {
   return axios.get(url)
 }
+
 export const parseBonds = async (url) => {
   const result = await grab(url)
   const parserObj = cheerio.load(result.data)
@@ -77,4 +74,32 @@ export const parseBonds = async (url) => {
   })
 
   return mapper(parseData)
+}
+
+export const supplyParser = async (url) => {
+  const ax = await axios.get(url)
+  const obj = cheerio.load(ax.data)
+  const result = []
+  obj('.table-heatmap .datatable-row').each((i, el) => {
+    const tmp = {
+      0: null,
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+    }
+    cheerio(el)
+      .find('td')
+      .each((i1, el1) => {
+        tmp[i1] = cheerio(el1).text().trim()
+      })
+    result.push({
+      country: tmp[0],
+      last: tmp[1],
+      reference: tmp[3],
+      unit: tmp[4],
+    })
+  })
+
+  return result
 }

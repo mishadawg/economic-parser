@@ -8,6 +8,7 @@ import { parseBonds, supplyParser } from '@/lib/processing/trading-economics.pro
   name: 'Trading Economics',
   path: 'trading-economics',
   parse: parseBonds,
+  tag: 'tradingeconomics.com',
 })
 export class TradingEconomicsParser extends AbstractParser {}
 
@@ -17,6 +18,7 @@ export class TradingEconomicsParser extends AbstractParser {}
   name: 'Trading Economics Money supply',
   path: 'trading-economics-money-supply',
   parse: supplyParser,
+  tag: 'tradingeconomics.com',
 })
 export class TradingEconomicsMoneySupplyM0Parser extends AbstractParser {}
 
@@ -26,6 +28,7 @@ export class TradingEconomicsMoneySupplyM0Parser extends AbstractParser {}
   name: 'Trading Economics Money supply',
   path: 'trading-economics-money-supply',
   parse: supplyParser,
+  tag: 'tradingeconomics.com',
 })
 export class TradingEconomicsMoneySupplyM1Parser extends AbstractParser {}
 
@@ -35,6 +38,7 @@ export class TradingEconomicsMoneySupplyM1Parser extends AbstractParser {}
   name: 'Trading Economics Money supply',
   path: 'trading-economics-money-supply',
   parse: supplyParser,
+  tag: 'tradingeconomics.com',
 })
 export class TradingEconomicsMoneySupplyM2Parser extends AbstractParser {}
 
@@ -44,5 +48,6 @@ export class TradingEconomicsMoneySupplyM2Parser extends AbstractParser {}
   name: 'Trading Economics Money supply',
   path: 'trading-economics-money-supply',
   parse: supplyParser,
+  tag: 'tradingeconomics.com',
 })
 export class TradingEconomicsMoneySupplyM3Parser extends AbstractParser {}

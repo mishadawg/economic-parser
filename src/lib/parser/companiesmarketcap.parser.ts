@@ -8,5 +8,6 @@ import { parse } from '@/lib/processing/companiesmarketcup.processing'
   name: 'Companies Market Cap',
   path: 'companies-market-cap',
   parse,
+  tag: 'companiesmarketcap.com',
 })
 export class CompaniesMarketCapParser extends AbstractParser {}

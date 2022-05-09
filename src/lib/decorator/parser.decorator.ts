@@ -14,6 +14,7 @@ export function ParserDecorator(params: ParserDecoratorPayload) {
       }
 
       public static controllerGetPath = params.path
+      public static tag = params.tag
     }
   }
 }

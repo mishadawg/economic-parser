@@ -10,17 +10,21 @@ import { CompaniesMarketCapParser } from '@/lib/parser/companiesmarketcap.parser
 
 import { ApiTags } from '@nestjs/swagger'
 
-@ApiTags('parsers')
 @Controller()
 export class AppController {
+  @ApiTags(TradingEconomicsParser.tag)
   @Get(TradingEconomicsParser.controllerGetPath)
   async getHello(): Promise<Record<string, any>> {
     return TradingEconomicsParser.parse()
   }
+
+  @ApiTags(CompaniesMarketCapParser.tag)
   @Get(CompaniesMarketCapParser.controllerGetPath)
   async cap(): Promise<Record<string, any>> {
     return CompaniesMarketCapParser.parse()
   }
+
+  @ApiTags(TradingEconomicsMoneySupplyM0Parser.tag)
   @Get(TradingEconomicsMoneySupplyM0Parser.controllerGetPath)
   async supply(): Promise<Record<string, any>> {
     return {

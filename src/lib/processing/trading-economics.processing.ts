@@ -80,7 +80,7 @@ export const supplyParser = async (url) => {
   const ax = await axios.get(url)
   const obj = cheerio.load(ax.data)
   const result = []
-  obj('.table-heatmap .datatable-row').each((i, el) => {
+  obj('.table-heatmap .datatable-row, .table-heatmap .datatable-row-alternating').each((i, el) => {
     const tmp = {
       0: null,
       1: null,

@@ -130,8 +130,36 @@ export const interestParser = async (url) => {
     result.push({
       country: tmp[0],
       last: tmp[1],
+      previous: tmp[2],
       reference: tmp[3],
       unit: tmp[4],
+    })
+  })
+
+  return result
+}
+
+export const cbParser = async (url) => {
+  const ax = await axios.get(url, userAgent)
+  const obj = cheerio.load(ax.data)
+  const result = []
+  obj('.table-heatmap .datatable-row, .table-heatmap .datatable-row-alternating').each((i, el) => {
+    const tmp = {
+      0: null,
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+    }
+    cheerio(el)
+      .find('td')
+      .each((i1, el1) => {
+        tmp[i1] = cheerio(el1).text().trim()
+      })
+    result.push({
+      country: tmp[0],
+      last: tmp[1],
+      reference: tmp[3],
     })
   })
 

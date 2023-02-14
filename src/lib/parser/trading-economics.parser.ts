@@ -1,6 +1,6 @@
 import { ParserDecorator } from '@/lib/decorator/parser.decorator'
 import { AbstractParser } from '@/lib/abstract-parser'
-import { parseBonds, supplyParser } from '@/lib/processing/trading-economics.processing'
+import { parseBonds, supplyParser, interestParser } from '@/lib/processing/trading-economics.processing'
 
 @ParserDecorator({
   schedule: '* * * * *',
@@ -51,3 +51,13 @@ export class TradingEconomicsMoneySupplyM2Parser extends AbstractParser {}
   tag: 'tradingeconomics.com',
 })
 export class TradingEconomicsMoneySupplyM3Parser extends AbstractParser {}
+
+@ParserDecorator({
+  schedule: '* * * * *',
+  url: 'https://tradingeconomics.com/country-list/interest-rate?continent=world',
+  name: 'Trading Economics Interest Rate Continent World',
+  path: 'trading-economics-interest-rate-continent-world',
+  parse: interestParser,
+  tag: 'tradingeconomics.com',
+})
+export class TradingEconomicsInterestParser extends AbstractParser {}

@@ -5,6 +5,7 @@ import {
   TradingEconomicsMoneySupplyM2Parser,
   TradingEconomicsMoneySupplyM3Parser,
   TradingEconomicsParser,
+  TradingEconomicsInterestParser,
 } from '@/lib/parser/trading-economics.parser'
 import { CompaniesMarketCapParser } from '@/lib/parser/companiesmarketcap.parser'
 
@@ -33,5 +34,11 @@ export class AppController {
       m2: await TradingEconomicsMoneySupplyM2Parser.parse(),
       m3: await TradingEconomicsMoneySupplyM3Parser.parse(),
     }
+  }
+
+  @ApiTags(TradingEconomicsInterestParser.tag)
+  @Get(TradingEconomicsInterestParser.controllerGetPath)
+  async interest(): Promise<Record<string, any>> {
+    return TradingEconomicsInterestParser.parse()
   }
 }

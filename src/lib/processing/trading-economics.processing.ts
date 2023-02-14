@@ -3,8 +3,8 @@ import cheerio from 'cheerio'
 
 const userAgent = {
   headers: {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'
-  }
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0',
+  },
 }
 
 const tableMapper = (table: any[]) => {
@@ -83,6 +83,34 @@ export const parseBonds = async (url) => {
 }
 
 export const supplyParser = async (url) => {
+  const ax = await axios.get(url, userAgent)
+  const obj = cheerio.load(ax.data)
+  const result = []
+  obj('.table-heatmap .datatable-row, .table-heatmap .datatable-row-alternating').each((i, el) => {
+    const tmp = {
+      0: null,
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+    }
+    cheerio(el)
+      .find('td')
+      .each((i1, el1) => {
+        tmp[i1] = cheerio(el1).text().trim()
+      })
+    result.push({
+      country: tmp[0],
+      last: tmp[1],
+      reference: tmp[3],
+      unit: tmp[4],
+    })
+  })
+
+  return result
+}
+
+export const interestParser = async (url) => {
   const ax = await axios.get(url, userAgent)
   const obj = cheerio.load(ax.data)
   const result = []

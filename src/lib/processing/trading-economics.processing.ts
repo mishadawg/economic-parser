@@ -1,6 +1,12 @@
 import axios, { AxiosPromise } from 'axios'
 import cheerio from 'cheerio'
 
+const userAgent = {
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'
+  }
+}
+
 const tableMapper = (table: any[]) => {
   const rows = table
     .filter((td) => td.data)
@@ -48,7 +54,7 @@ const mapper = (parseData: any[]): any => {
   }
 }
 const grab = (url): Promise<AxiosPromise> => {
-  return axios.get(url)
+  return axios.get(url, userAgent)
 }
 
 export const parseBonds = async (url) => {
@@ -77,7 +83,7 @@ export const parseBonds = async (url) => {
 }
 
 export const supplyParser = async (url) => {
-  const ax = await axios.get(url)
+  const ax = await axios.get(url, userAgent)
   const obj = cheerio.load(ax.data)
   const result = []
   obj('.table-heatmap .datatable-row, .table-heatmap .datatable-row-alternating').each((i, el) => {
